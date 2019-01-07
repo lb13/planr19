@@ -1,0 +1,28 @@
+{% extends 'curriculum/base.html' %}
+{% block content %}
+    <h1>Curriculum Planr</h1>
+
+    <br>
+    
+    <table class="table table-sm">
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Created By</th>
+            <th>Created On</th>
+        </tr>
+        <tr>
+            <td>{{ object.code }}</td>
+            <td>{{ object.name }}</td>
+            <td>{{ object.created_by }}</td>
+            <td>{{ object.created_date|date:"d/m/Y" }}</td>
+        </tr>
+    </table>
+
+    <p>{{ object.web_description }}</p>
+    {% if object.created_by == user %}
+    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'offering-update' object.id %}">Update</a>
+    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'offering-delete' object.id %}">Delete</a>
+    {% endif %}
+ 
+{% endblock content %}

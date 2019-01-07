@@ -1,0 +1,24 @@
+{% extends 'curriculum/base.html' %}
+{% block content %}
+    <h1>Curriculum Planr</h1>
+
+    <br>
+    
+    <table class="table table-sm">
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Created By</th>
+            <th>Created On</th>
+        </tr>
+        {% for offering in offerings %}
+        <tr>
+            <td><a href="{% url 'offering-detail' offering.id %}">{{ offering.code }}</a></td>
+            <td>{{ offering.name }}</td>
+            <td>{{ offering.created_by }}</td>
+            <td>{{ offering.created_date|date:"d/m/Y" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock content %}
